@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/index.css">
+    <link rel="stylesheet" href="/static/css/reset.css">
+    <script src="/static/vue/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <link rel="stylesheet" :href="'/static/css/theme/' + theme + '.css'">
+        <nav>
+            <!-- 导航条左 -->
+            <div class="left">
+                <a href="#">首页</a>
+                <a href="#">新闻</a>
+                <a href="#">心情</a>
+                <a href="#">关于</a>
+            </div>
+            
+            <!-- 导航条右 -->
+            <div class="right">
+                <a href="#" @click="setTheme('light')">白色主题</a>
+                <a href="#" @click="setTheme('dark')">黑色主题</a>
+                <a href="#">登录</a>
+                <a href="#">注册</a>
+            </div>
+        </nav>
+        <main>网页主体</main>
+        <footer>底部信息栏</footer>
+    </div>
+
+    <script>
+        new Vue ({
+            el: '#app',
+            delimiters: ["[[", "]]"],
+            data: {
+                msg: 'snak',
+                theme: 'light', // 默认主题
+            },
+            methods: {
+                setTheme(themeName) {
+                    this.theme = themeName
+                }
+            }
+        })
+    </script>
+</body>
+</html>

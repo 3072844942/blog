@@ -1,0 +1,32 @@
+#app {
+  width: 100%; }
+  #app nav {
+    width: calc(100% - 240px);
+    height: 60px;
+    background-color: var(--nav_bg);
+    display: flex;
+    align-items: center;
+    padding: 0 120px; }
+    #app nav .left {
+      width: 60%; }
+    #app nav .right {
+      width: 40%;
+      display: flex;
+      justify-content: right; }
+    #app nav a {
+      margin-right: 30px;
+      color: var(--nav_color); }
+      #app nav a:last-child {
+        margin-right: 0px; }
+  #app main {
+    width: 100%;
+    min-height: 800px;
+    background-color: var(--main_bg);
+    color: var(--main_color); }
+  #app footer {
+    width: 100%;
+    min-height: 200px;
+    background-color: var(--footer_bg);
+    color: var(--footer_color); }
+
+/*# sourceMappingURL=index.css.map */

@@ -1,0 +1,45 @@
+#app {
+    width: 100%;
+
+    nav {
+        width: calc(100% - 240px);
+        height: 60px;
+        background-color: var(--nav_bg);
+        display: flex;
+        align-items: center;
+        padding: 0 120px;
+
+        .left {
+            width: 60%;
+        }
+
+        .right {
+            width: 40%;
+            display: flex;
+            justify-content: right;
+        }
+
+        a {
+            margin-right: 30px;
+            color: var(--nav_color);
+
+            &:last-child {
+                margin-right: 0px;
+            }
+        }
+    }
+
+    main {
+        width: 100%;
+        min-height: 800px;
+        background-color: var(--main_bg);
+        color: var(--main_color);
+    }
+
+    footer {
+        width: 100%;
+        min-height: 200px;
+        background-color: var(--footer_bg);
+        color: var(--footer_color);
+    }
+}
