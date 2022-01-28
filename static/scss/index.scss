@@ -2,12 +2,12 @@
     width: 100%;
 
     nav {
-        width: calc(100% - 240px);
+        width: calc(100% - 200px);
         height: 60px;
         background-color: var(--nav_bg);
         display: flex;
         align-items: center;
-        padding: 0 120px;
+        padding: 0 100px;
 
         .left {
             width: 60%;
@@ -17,10 +17,15 @@
             width: 40%;
             display: flex;
             justify-content: right;
+
+            img {
+                width: 20px;
+                margin-right: 20px;
+            }
         }
 
         a {
-            margin-right: 30px;
+            margin-right: 20px;
             color: var(--nav_color);
 
             &:last-child {

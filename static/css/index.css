@@ -1,20 +1,23 @@
 #app {
   width: 100%; }
   #app nav {
-    width: calc(100% - 240px);
+    width: calc(100% - 200px);
     height: 60px;
     background-color: var(--nav_bg);
     display: flex;
     align-items: center;
-    padding: 0 120px; }
+    padding: 0 100px; }
     #app nav .left {
       width: 60%; }
     #app nav .right {
       width: 40%;
       display: flex;
       justify-content: right; }
+      #app nav .right img {
+        width: 20px;
+        margin-right: 20px; }
     #app nav a {
-      margin-right: 30px;
+      margin-right: 20px;
       color: var(--nav_color); }
       #app nav a:last-child {
         margin-right: 0px; }

@@ -1,8 +1,13 @@
 body {
     margin: 0px;
+    cursor: var(--body_arrow), default;
 }
 
 a {
     text-decoration: none;
     color: #333;
+}
+
+.theme_img {
+    cursor: var(--theme_hand), default;
 }
