@@ -4,10 +4,15 @@
     nav {
         width: calc(100% - 200px);
         height: 60px;
-        background-color: var(--nav_bg);
+        // background-color: var(--nav_bg);
         display: flex;
         align-items: center;
         padding: 0 100px;
+        position: fixed;
+        z-index: 100;
+        top: 0;
+        left: 0;
+
 
         .left {
             width: 60%;
@@ -26,10 +31,31 @@
 
         a {
             margin-right: 20px;
-            color: var(--nav_color);
+            // color: var(--nav_color);
+            color: white;
 
             &:last-child {
                 margin-right: 0px;
+            }
+        }
+    }
+
+    header {
+        width: 100%;
+        height: 760px;
+        position: relative;
+
+        > .dynamic_shuffl {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            transition: all, 2s;
+
+            img {
+                width: 100%;
             }
         }
     }

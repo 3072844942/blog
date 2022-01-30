@@ -1,6 +1,6 @@
 body {
     margin: 0px;
-    cursor: var(--body_arrow), default;
+    cursor: var(--arrow), default;
 }
 
 a {
@@ -8,6 +8,10 @@ a {
     color: #333;
 }
 
+.link {
+    cursor: var(--hand), default;
+}
+
 .theme_img {
-    cursor: var(--theme_hand), default;
+    cursor: var(--up_arrow), default;
 }

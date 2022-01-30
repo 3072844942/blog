@@ -1,4 +1,5 @@
 :root {
-    --body_arrow: url("/static/image/mouse/Hacked\ Mod\ Red/Arrow.cur");
-    --theme_hand: url("/static/image/mouse/Hacked\ Mod\ Red/Hand.cur");
+    --arrow: url("/static/image/mouse/Hacked\ Mod\ Red/Arrow.cur");
+    --hand: url("/static/image/mouse/Hacked\ Mod\ Red/Hand.cur");
+    --up_arrow: url("/static/image/mouse/Hacked\ Mod\ Red/UpArrow.cur");
 }

@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load my_tag %}
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
     <link rel="stylesheet" type="text/css" href="/static/css/index.css">
     <link rel="stylesheet" href="/static/css/reset.css">
     <script src="/static/vue/vue.js"></script>
@@ -15,22 +17,38 @@
         <nav>
             <!-- 导航条左 -->
             <div class="left">
-                <a href="#">首页</a>
-                <a href="#">新闻</a>
-                <a href="#">心情</a>
-                <a href="#">关于</a>
+                <a class="link" href="#">首页</a>
+                <a class="link" href="#">新闻</a>
+                <a class="link" href="#">心情</a>
+                <a class="link" href="#">关于</a>
             </div>
-            
+
             <!-- 导航条右 -->
             <div class="right">
-                <img class="theme_img" v-show="theme === 'light'" src="/static/image/light.svg" @click="setTheme('dark')" alt="">
-                <img class="theme_img" v-show="theme === 'dark'" src="/static/image/dark.svg" @click="setTheme('light')" alt="">
-                <a href="#">登录</a>
-                <a href="#">注册</a>
+                <img class="theme_img" v-show="theme === 'light'" src="/static/image/theme/light.svg" @click="setTheme('dark')" alt="">
+                <img class="theme_img" v-show="theme === 'dark'" src="/static/image/theme/dark.svg" @click="setTheme('light')" alt="">
+                <a class="link" href="#">登录</a>
+                <a class="link" href="#">注册</a>
             </div>
         </nav>
-        <main>网页主体</main>
-        <footer>底部信息栏</footer>
+
+        <header>
+            {% for img in img_list %}
+            <div class="dynamic_shuffl">
+                <img src="{{ img }}" alt="">
+             </div>
+            {% endfor %}
+        </header>
+
+        <main>
+            网页主体
+            <div>
+                {{ 2|add1 }}
+            </div>
+        </main>
+        <footer>
+            底部信息栏
+        </footer>
     </div>
 
     <script>
@@ -64,7 +82,22 @@
                     localStorage.setItem('theme', themeName)
                 }
             }
-        })
+        })  
+
+        // 图片轮播图
+        let menu_img = document.querySelectorAll('.dynamic_shuffl')
+        console.log(menu_img)
+
+        let menu_length = menu_img.length
+        let index = 0
+        setInterval(() => {
+            index ++
+            if (index === menu_length) index = 0
+            
+            for (let i of menu_img)
+                i.style.opacity = 0
+            menu_img[index].style.opacity = 1
+        }, 6000)
     </script>
 </body>
 </html>
