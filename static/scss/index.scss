@@ -42,7 +42,7 @@
 
     header {
         width: 100%;
-        height: 760px;
+        height: 100vh;
         position: relative;
 
         > .dynamic_shuffl {
@@ -69,8 +69,136 @@
 
     footer {
         width: 100%;
-        min-height: 200px;
+        display: flex;
+        height: 180px;
         background-color: var(--footer_bg);
         color: var(--footer_color);
+        font-size: 14px;
+
+        .left, .right {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .thank {
+            color: #26c6e1;
+            font-size: 20px;
+        }
+
+        .site_info {
+            display: flex;
+            align-items: center;
+
+            span {
+                margin-right: 10px;
+                display: flex;
+                align-items: center;
+            }
+
+            img {
+                width: 20px;
+                margin-right: 5px;
+            }
+        }
+
+        .version {
+            display: flex;
+
+            span {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: white;
+                width: 70px;
+                height: 30px;
+
+                &:nth-child(1) {
+                    background-color: #ff9800;
+                    border-radius: 5px 0 0 5px;
+                }
+
+                &:nth-child(2) {
+                    background-color: #26c6da;
+                    border-radius: 0 5px 5px 0;
+                }
+            }
+        }
+
+        .beian {
+            a {
+                display: flex;
+                align-items: center;
+            }
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        .contact {
+            display: flex;
+            justify-content: space-between;
+
+            > div {
+                position: relative;
+
+                .qq{
+                    width: 80px;
+                    position: absolute;
+                    top: 0;
+                    left: -23px;
+                    transition: all 0.4s;
+                    opacity: 0;
+                }
+                .wechat {
+                    width: 80px;
+                    position: absolute;
+                    top: 0;
+                    left: 31px;
+                    transition: all 0.4s;
+                    opacity: 0;
+                }
+            }
+
+            .qq_svg {
+                width: 40px;
+                margin-right: 10px;
+                position: relative;
+                z-index: 1;
+
+                &:hover {
+                    &~.qq {
+                        top: -85px;
+                        opacity: 1;
+                    }
+                }
+            }
+
+            .wechat_svg {
+                width: 40px;
+                margin-right: 10px;
+                position: relative;
+                z-index: 1;
+
+                &:hover {
+                    &~.wechat {
+                        top: -85px;
+                        opacity: 1;
+                    }
+                }
+            }
+
+            .github_svg {
+                width: 40px;
+                margin-right: 10px;
+            }
+
+            .cnblog {
+                width: 40px;
+            }
+        }
     }
 }

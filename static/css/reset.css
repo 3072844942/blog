@@ -6,6 +6,7 @@ body {
 a {
     text-decoration: none;
     color: #333;
+    cursor: var(--hand), default;
 }
 
 .link {
@@ -14,4 +15,8 @@ a {
 
 .theme_img {
     cursor: var(--up_arrow), default;
+}
+
+p {
+    margin: 0;
 }

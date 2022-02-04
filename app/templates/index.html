@@ -32,22 +32,44 @@
             </div>
         </nav>
 
-        <header>
-            {% for img in img_list %}
-            <div class="dynamic_shuffl">
-                <img src="{{ img }}" alt="">
-             </div>
-            {% endfor %}
-        </header>
+        {% banner 'index' %}
 
         <main>
             网页主体
-            <div>
-                {{ 2|add1 }}
-            </div>
         </main>
         <footer>
-            底部信息栏
+            <div class="left">
+                <p class="thank">Thank For Your Visit</p>
+                <p class="site_info">
+                    <span><img src="/static/image/footer/aliyun.png" alt="">阿里云</span>
+                </p>
+                <p class="version">
+                    <span>verion</span>
+                    <span>1.0.0</span>
+                </p>
+                <p>
+                    建站日期: 2022-1-26
+                </p>
+                <p class="beian">
+                    <a href="http://baidu.com/"><img src="/static/image/footer/badges.png" alt="">备案号: xxx</a>
+                </p>
+            </div>
+
+            <div class="right">
+                <div class="contact">
+                    <div>
+                        <img class="qq_svg" src="/static/image/footer/qq_icon.svg" alt="">
+                        <img class="qq" src="/static/image/footer/qq.png" alt="">
+                        <img class="wechat_svg" src="/static/image/footer/wexin_icon.svg" alt="">
+                        <img class="wechat" src="/static/image/footer/wechat.png" alt="">
+                        <a class="link" href="http://github.com/3072844942/blog" target="_blank"><img class="github_svg" src="/static/image/footer/github_icon.svg" alt=""></a>
+                        <a class="link" href="http://www.cnblogs.com/snak/" target="_blank"><img class="cnblog" src="/static/image/footer/cnblog.jpg" alt="博客园"></a>
+                    </div>
+                </div>
+                <p>
+                    联系邮箱: 3072844942@qq.com
+                </p>
+            </div>
         </footer>
     </div>
 
