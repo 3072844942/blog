@@ -3,11 +3,13 @@
 {% load my_tag %}
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Snak的妙妙屋</title>
 
+    <link rel="icon" href="/static/image/title/title.png">
     <link rel="stylesheet" type="text/css" href="/static/css/index.css">
     <link rel="stylesheet" href="/static/css/reset.css">
     <script src="/static/vue/vue.js"></script>
+    <script type="text/javascript" src="/static/js/title.js"></script>
 </head>
 
 <body>
@@ -17,10 +19,12 @@
         <nav>
             <!-- 导航条左 -->
             <div class="left">
-                <a class="link" href="#">首页</a>
-                <a class="link" href="#">新闻</a>
+                <a class="link" href="/">首页</a>
+                <a class="link" href="/news">新闻</a>
                 <a class="link" href="#">心情</a>
+                <a class="link" href="$">回忆录</a>
                 <a class="link" href="#">关于</a>
+                <a class="link" href="#">网站导航</a>
             </div>
 
             <!-- 导航条右 -->
@@ -35,7 +39,88 @@
         {% banner 'index' %}
 
         <main>
-            网页主体
+            {% block main %}
+            <div class="main">
+                <div class="left">
+                    <div class="card boutique_article">
+                        <div class="title">
+                            <h2>精选文章</h2>
+                            <div>
+                                <a class="link" href="#">查看更多</a>
+                            </div>
+                        </div>
+                        <div class="body">
+                            主要内容区域
+                        </div>
+                    </div>
+
+                    <div class="card hot_list">
+                        <div class="title">
+                            <h2>今日热搜</h2>
+                            <div>
+                                <a class="link" href="#">查看更多</a>
+                            </div>
+                        </div>
+                        <div class="body">
+                            今日热搜区域
+                        </div>
+                    </div>
+
+                    <div class="card all_article">
+                        <div class="title">
+                            <h2>博客文章</h2>
+                        </div>
+                        <div class="body">
+                            文章区域
+                        </div>
+                    </div>
+                </div>
+
+                <div class="right">
+                    <div class="card me">
+                        <div class="title">
+                            <h2>个人信息</h2>
+                        </div>
+                        <div class="body">
+                            <ul>
+                                <li>123</li>
+                                <li>123</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card tages">
+                        <div class="title">
+                            <h2>公告</h2>
+                        </div>
+                        <div class="body">
+                            12
+                        </div>
+                    </div>
+
+                    <div class="card site_info">
+                        <div class="title">
+                            <h2>网站信息</h2>
+                        </div>
+                        <div class="body">
+                            12
+                        </div>
+                    </div>
+
+                    <div class="card links">
+                        <div class="title">
+                            <h2>友链</h2>
+                            <div>
+                                <a class="link" href="#">查看更多</a>
+                            </div>
+                        </div>
+                        <div class="body">
+                            12
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endblock %}
         </main>
         <footer>
             <div class="left">
@@ -63,7 +148,7 @@
                         <img class="wechat_svg" src="/static/image/footer/wexin_icon.svg" alt="">
                         <img class="wechat" src="/static/image/footer/wechat.png" alt="">
                         <a class="link" href="http://github.com/3072844942/blog" target="_blank"><img class="github_svg" src="/static/image/footer/github_icon.svg" alt=""></a>
-                        <a class="link" href="http://www.cnblogs.com/snak/" target="_blank"><img class="cnblog" src="/static/image/footer/cnblog.jpg" alt="博客园"></a>
+                        <a class="link" href="http://www.cnblogs.com/snak/" target="_blank"><img class="cnblog" src="/static/image/footer/cnblog.jpg" alt="" title="博客园"></a>
                     </div>
                 </div>
                 <p>

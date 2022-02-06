@@ -1,3 +1,20 @@
+.card .title {
+  display: flex;
+  border-radius: 5px 5px 0 0;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #f5f5f5;
+  padding: 20px 20px 10px 20px;
+  background-color: white; }
+  .card .title h2 {
+    font-size: 20px; }
+  .card .title > div a {
+    font-size: 14px; }
+.card .body {
+  padding: 10px 20px 20px 20px;
+  background-color: white;
+  border-radius: 0 0 5px 5px; }
+
 #app {
   width: 100%; }
   #app nav {
@@ -35,14 +52,74 @@
       width: 100%;
       height: 100%;
       overflow: hidden;
-      transition: all, 2s; }
+      transition: all, 2s;
+      opacity: 0; }
+      #app header > .dynamic_shuffl:first-child {
+        opacity: 1; }
       #app header > .dynamic_shuffl img {
         width: 100%; }
   #app main {
-    width: 100%;
+    width: calc(100% - 240px);
+    padding: 20px 120px;
     min-height: 800px;
     background-color: var(--main_bg);
-    color: var(--main_color); }
+    color: var(--main_color);
+    display: flex;
+    justify-content: center; }
+  #app .main {
+    width: 120vh;
+    display: flex;
+    justify-content: space-between; }
+    #app .main > div > div {
+      margin-bottom: 20px; }
+    #app .main .left {
+      width: 69%; }
+    #app .main .right {
+      width: 30%; }
+      #app .main .right .me > .body {
+        position: relative; }
+        #app .main .right .me > .body ul {
+          display: flex;
+          flex-wrap: wrap;
+          margin-top: 10px; }
+@keyframes move_box {
+  0% {
+    left: 0;
+    top: 0; }
+  25% {
+    left: calc(100% - 20px);
+    top: 0; }
+  50% {
+    top: calc(100% - 20px);
+    left: calc(100% - 20px); }
+  75% {
+    top: calc(100% - 20px);
+    left: 0; }
+  100% {
+    left: 0;
+    top: 0; } }
+          #app .main .right .me > .body ul::before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+            width: 20px;
+            height: 20px;
+            content: "";
+            background-color: #ff9800;
+            animation-name: move_box;
+            animation-duration: 5s;
+            animation-iteration-count: infinite; }
+          #app .main .right .me > .body ul li {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 40px; }
+            #app .main .right .me > .body ul li:not(:last-child) {
+              border-bottom: 1px solid #f0eeee; }
+            #app .main .right .me > .body ul li:nth-child(2n + 1) {
+              background-color: #f5f5f5; }
   #app footer {
     width: 100%;
     display: flex;
