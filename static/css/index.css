@@ -58,6 +58,24 @@
         opacity: 1; }
       #app header > .dynamic_shuffl img {
         width: 100%; }
+@keyframes move_arrow {
+  0% {
+    top: calc(100% - 70px);
+    opacity: 1; }
+  50% {
+    top: calc(100% - 50px);
+    opacity: 0.5; }
+  100% {
+    top: calc(100% - 70px);
+    opacity: 1; } }
+    #app header .arrow {
+      position: absolute;
+      z-index: 1;
+      top: calc(100% - 70px);
+      left: calc(50% - 6px);
+      animation-name: move_arrow;
+      animation-duration: 4s;
+      animation-iteration-count: infinite; }
   #app main {
     width: calc(100% - 240px);
     padding: 20px 120px;
