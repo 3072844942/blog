@@ -1,211 +1,226 @@
 <!DOCTYPE html>
 <html lang="en">
-{% load my_tag %}
-<head>
-    <meta charset="UTF-8">
-    <title>Snak的妙妙屋</title>
+    {% load my_tag %}
+    <head>
+        <meta charset="UTF-8">
+        <title>Snak的妙妙屋</title>
 
-    <link rel="icon" href="/static/image/title/title.png">
-    <link rel="stylesheet" type="text/css" href="/static/css/index.css">
-    <link rel="stylesheet" href="/static/css/reset.css">
-    <link rel="stylesheet" href="/static/css/scrollbar/index.css">
-    <script src="/static/vue/vue.js"></script>
-    <script type="text/javascript" src="/static/js/title.js"></script>
-</head>
+        <link rel="icon" href="/static/image/title/title.png">
+        <link rel="stylesheet" type="text/css" href="/static/css/index.css">
+        <link rel="stylesheet" href="/static/css/reset.css">
+        <link rel="stylesheet" href="/static/css/scrollbar/index.css">
+        <script src="/static/vue/vue.js"></script>
+        <script type="text/javascript" src="/static/js/title.js"></script>
+    </head>
 
-<body>
-    <div id="app">
-        <link rel="stylesheet" :href="'/static/css/theme/' + theme + '.css'">
-        <link rel="stylesheet" :href="'/static/css/mouse/' + mouse + '.css'">
-        <nav>
-            <!-- 导航条左 -->
-            <div class="left">
-                <a class="link" href="/">首页</a>
-                <a class="link" href="/news">新闻</a>
-                <a class="link" href="#">心情</a>
-                <a class="link" href="$">回忆录</a>
-                <a class="link" href="#">关于</a>
-                <a class="link" href="#">网站导航</a>
-            </div>
-
-            <!-- 导航条右 -->
-            <div class="right">
-                <img class="theme_img" v-show="theme === 'light'" src="/static/image/theme/light.svg" @click="setTheme('dark')" alt="">
-                <img class="theme_img" v-show="theme === 'dark'" src="/static/image/theme/dark.svg" @click="setTheme('light')" alt="">
-                <a class="link" href="#">登录</a>
-                <a class="link" href="#">注册</a>
-            </div>
-        </nav>
-
-        {% banner 'index' %}
-
-        <main>
-            {% block main %}
-            <div class="main">
+    <body>
+        <div id="app">
+            <link rel="stylesheet" :href="'/static/css/theme/' + theme + '.css'">
+            <link rel="stylesheet" :href="'/static/css/mouse/' + mouse + '.css'">
+            <nav>
+                <!-- 导航条左 -->
                 <div class="left">
-                    <div class="card boutique_article">
-                        <div class="title">
-                            <h2>精选文章</h2>
-                            <div>
-                                <a class="link" href="#">查看更多</a>
+                    <a class="link" href="/">首页</a>
+                    <a class="link" href="/news">新闻</a>
+                    <a class="link" href="#">心情</a>
+                    <a class="link" href="$">回忆录</a>
+                    <a class="link" href="#">关于</a>
+                    <a class="link" href="#">网站导航</a>
+                </div>
+
+                <!-- 导航条右 -->
+                <div class="right">
+                    <img class="theme_img" v-show="theme === 'light'" src="/static/image/theme/light.svg" @click="setTheme('dark')" alt="">
+                    <img class="theme_img" v-show="theme === 'dark'" src="/static/image/theme/dark.svg" @click="setTheme('light')" alt="">
+                    <a class="link" href="#">登录</a>
+                    <a class="link" href="#">注册</a>
+                </div>
+            </nav>
+
+            {% banner 'index' %}
+
+
+            <main>
+                {% block main %}
+                <div class="main">
+                    <div class="left">
+                        <div class="card">
+                            <div class="welcome">
+                                <img src="/static/image/main/hello.png" alt="">
+                                <marquee style="margin: 0 12px 0 12px;">欢迎各位</marquee>
+                                <img src="/static/image/main/hello.png">
                             </div>
                         </div>
-                        <div class="body">
-                            主要内容区域
+                        <div class="card boutique_article">
+                            <div class="title">
+                                <h2>精选文章</h2>
+                                <div>
+                                    <a class="link" href="#">查看更多</a>
+                                </div>
+                            </div>
+                            <div class="body">
+                                主要内容区域
+                            </div>
+                        </div>
+
+                        <div class="card hot_list">
+                            <div class="title">
+                                <h2>今日热搜</h2>
+                                <div>
+                                    <a class="link" href="#">查看更多</a>
+                                </div>
+                            </div>
+                            <div class="body">
+                                今日热搜区域
+                            </div>
+                        </div>
+
+                        <div class="card all_article">
+                            <div class="title">
+                                <h2>博客文章</h2>
+                            </div>
+                            <div class="body">
+                                文章区域
+                            </div>
                         </div>
                     </div>
 
-                    <div class="card hot_list">
-                        <div class="title">
-                            <h2>今日热搜</h2>
-                            <div>
-                                <a class="link" href="#">查看更多</a>
+                    <div class="right">
+                        <div class="card me">
+                            <div class="up title">
+                                <img src="/static/image/main/me.png">
+                            </div>
+
+                            <div class="dowm body">
+                                <div class="item" title="累计标签数 0">
+                                    <span class="num">0</span>
+                                    <span>标签数</span>
+                                </div>
+                                <div class="item" title="累计文章数 0">
+                                    <span class="num">0</span>
+                                    <span>文章数</span>
+                                </div>
+                                <div class="item" title="累计评论数 0">
+                                    <span class="num">0</span>
+                                    <span>评论量</span>
+                                </div>
                             </div>
                         </div>
-                        <div class="body">
-                            今日热搜区域
-                        </div>
-                    </div>
 
-                    <div class="card all_article">
-                        <div class="title">
-                            <h2>博客文章</h2>
+                        <div class="card site_info">
+                            <div class="title">
+                                <h2>站铭志</h2>
+                            </div>
+                            <div class="body">
+                                <div class="font">
+                                    Dear:</br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;You may think know the following code does. But you dont. Trust me.Fiddle with it, and you'll spend many a sleepless night cursing the moment you thought you'd be clever enough to "optimize" the code below. Now close this file and go play with something else.
+                                </div>
+                            </div>
                         </div>
-                        <div class="body">
-                            文章区域
+
+                        <div class="card links">
+                            <div class="title">
+                                <h2>友链</h2>
+                                <div>
+                                    <a class="link" href="#">查看更多</a>
+                                </div>
+                            </div>
+                            <div class="body">
+                                <a href="http://101.43.175.73:8090/" target="_blank">http://101.43.175.73:8090/</a>
+                            </div>
                         </div>
                     </div>
+                </div>
+                {% endblock %}
+            </main>
+            <footer>
+                <div class="left">
+                    <p class="thank">Thank For Your Visit</p>
+                    <p class="site_info">
+                    <span><img src="/static/image/footer/aliyun.png" alt="">阿里云</span>
+                    </p>
+                    <p class="version">
+                    <span>verion</span>
+                    <span>1.0.0</span>
+                    </p>
+                    <p>
+                    建站日期: 2022-1-26
+                    </p>
+                    <p class="beian">
+                    <a href="http://baidu.com/"><img src="/static/image/footer/badges.png" alt="">备案号: xxx</a>
+                    </p>
                 </div>
 
                 <div class="right">
-                    <div class="card me">
-                        <div class="title">
-                            <h2>个人信息</h2>
-                        </div>
-                        <div class="body">
-                            <ul>
-                                <li>123</li>
-                                <li>123</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="card tages">
-                        <div class="title">
-                            <h2>公告</h2>
-                        </div>
-                        <div class="body">
-                            12
+                    <div class="contact">
+                        <div>
+                            <img class="qq_svg" src="/static/image/footer/qq_icon.svg" alt="">
+                            <img class="qq" src="/static/image/footer/qq.png" alt="">
+                            <img class="wechat_svg" src="/static/image/footer/wexin_icon.svg" alt="">
+                            <img class="wechat" src="/static/image/footer/wechat.png" alt="">
+                            <a class="link" href="http://github.com/3072844942/blog" target="_blank"><img class="github_svg" src="/static/image/footer/github_icon.svg" alt=""></a>
+                            <a class="link" href="http://www.cnblogs.com/snak/" target="_blank"><img class="cnblog" src="/static/image/footer/cnblog.jpg" alt="" title="博客园"></a>
                         </div>
                     </div>
-
-                    <div class="card site_info">
-                        <div class="title">
-                            <h2>网站信息</h2>
-                        </div>
-                        <div class="body">
-                            12
-                        </div>
-                    </div>
-
-                    <div class="card links">
-                        <div class="title">
-                            <h2>友链</h2>
-                            <div>
-                                <a class="link" href="#">查看更多</a>
-                            </div>
-                        </div>
-                        <div class="body">
-                            12
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {% endblock %}
-        </main>
-        <footer>
-            <div class="left">
-                <p class="thank">Thank For Your Visit</p>
-                <p class="site_info">
-                    <span><img src="/static/image/footer/aliyun.png" alt="">阿里云</span>
-                </p>
-                <p class="version">
-                    <span>verion</span>
-                    <span>1.0.0</span>
-                </p>
-                <p>
-                    建站日期: 2022-1-26
-                </p>
-                <p class="beian">
-                    <a href="http://baidu.com/"><img src="/static/image/footer/badges.png" alt="">备案号: xxx</a>
-                </p>
-            </div>
-
-            <div class="right">
-                <div class="contact">
-                    <div>
-                        <img class="qq_svg" src="/static/image/footer/qq_icon.svg" alt="">
-                        <img class="qq" src="/static/image/footer/qq.png" alt="">
-                        <img class="wechat_svg" src="/static/image/footer/wexin_icon.svg" alt="">
-                        <img class="wechat" src="/static/image/footer/wechat.png" alt="">
-                        <a class="link" href="http://github.com/3072844942/blog" target="_blank"><img class="github_svg" src="/static/image/footer/github_icon.svg" alt=""></a>
-                        <a class="link" href="http://www.cnblogs.com/snak/" target="_blank"><img class="cnblog" src="/static/image/footer/cnblog.jpg" alt="" title="博客园"></a>
-                    </div>
-                </div>
-                <p>
+                    <p>
                     联系邮箱: 3072844942@qq.com
-                </p>
-            </div>
-        </footer>
-    </div>
+                    </p>
+                </div>
+            </footer>
+        </div>
 
-    <script>
-        new Vue ({
-            el: '#app',
-            delimiters: ["[[", "]]"],
-            data: {
-                msg: 'snak',
-                theme: 'light', // 默认网页主题
-                mouse: 'white', // 默认鼠标主题
-            },
-            created() {
-                this.init_theme()
-            },
-            methods: {
-                init_theme() {
-                    // 读取存储的主题信息
-                    let theme = localStorage.getItem('theme')
-                    if (theme) this.theme = theme
-                    
-                    // 随机创建鼠标主题
-                    let mouse = ["blue", "purple", "white", "green", "red", "yellow"]
-                    let index = Math.floor(Math.random() * 6);
-                    this.mouse = mouse[index]
+        <script>
+            new Vue ({
+                el: '#app',
+                delimiters: ["[[", "]]"],
+                data: {
+                    msg: 'snak',
+                    theme: 'light', // 默认网页主题
+                    mouse: 'white', // 默认鼠标主题
                 },
+                created() {
+                    this.init_theme()
+                },
+                methods: {
+                    init_theme() {
+                        // 读取存储的主题信息
+                        let theme = localStorage.getItem('theme')
+                        if (theme) this.theme = theme
 
-                // 设置主题
-                setTheme(themeName) {
-                    this.theme = themeName
-                    // 存储主题
-                    localStorage.setItem('theme', themeName)
+                        // 随机创建鼠标主题
+                        let mouse = ["blue", "purple", "white", "green", "red", "yellow"]
+                        let index = Math.floor(Math.random() * 6);
+                        this.mouse = mouse[index]
+                    },
+
+                    // 设置主题
+                    setTheme(themeName) {
+                        this.theme = themeName
+                        // 存储主题
+                        localStorage.setItem('theme', themeName)
+                    },
+
+                    next() {
+                        console.log("a");
+                    }
                 }
-            }
-        })  
+            })  
 
-        // 图片轮播图
-        let menu_img = document.querySelectorAll('.dynamic_shuffl')
-        console.log(menu_img)
+// 图片轮播图
+let menu_img = document.querySelectorAll('.dynamic_shuffl')
+console.log(menu_img)
 
-        let menu_length = menu_img.length
-        let index = 0
-        setInterval(() => {
-            index ++
-            if (index === menu_length) index = 0
-            
-            for (let i of menu_img)
-                i.style.opacity = 0
-            menu_img[index].style.opacity = 1
-        }, 6000)
-    </script>
-</body>
+let menu_length = menu_img.length
+let index = 0
+setInterval(() => {
+    index ++
+    if (index === menu_length) index = 0
+
+    for (let i of menu_img)
+        i.style.opacity = 0
+    menu_img[index].style.opacity = 1
+}, 6000)
+        </script>
+    </body>
 </html>
