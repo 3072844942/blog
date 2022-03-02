@@ -1,19 +1,24 @@
-# 个人博客
+# blog
 
-## 开发环境
-+ python 3.8.10
-+ django 3.2.8
-+ Ruby Sass 3.7.4
+## Project setup
+```
+npm install
+```
 
-## 待解决问题
-+ 主图下面箭头下滑问题
-+ 个人信息问题
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
 
-## 时间线
-+ 2022/2/06 主页内容完善
-+ 2022/2/04 主页页脚编写
-+ 2022/1/29 主页轮播图
-+ 2022/1/28 设计鼠标图片变换
-+ 2022/1/26 主体界面主题编写
-+ 2022/1/22 设置及模板中..
-+ 2022/1/21 开工
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
