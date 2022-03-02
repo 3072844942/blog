@@ -1,6 +1,6 @@
 ## 博客主界面
 
-##### 博客地址[https://www.snak.space](https://www.snak.sapce)
+##### 博客地址[https://www.snak.space](https://www.snak.space)
 
 当前博客分为三个部分
 + 主界面 - master分支
