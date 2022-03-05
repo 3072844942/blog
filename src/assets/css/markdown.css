@@ -41,8 +41,9 @@
       --color-neutral-muted: rgba(110,118,129,0.4);
       --color-accent-fg: #58a6ff;
       --color-accent-emphasis: #1f6feb;
-      --color-attention-subtle: rgba(187,128,9,0.15);
+      --color-attention-subtle: rgba(255,128,9,0.15);
       --color-danger-fg: #f85149;
+      --color-text-primary: rgba(255, 255, 255);
     }
   }
   
@@ -91,6 +92,7 @@
       --color-accent-emphasis: #0969da;
       --color-attention-subtle: #fff8c5;
       --color-danger-fg: #cf222e;
+      --color-text-primary: rgba(0, 0, 0);
     }
   }
   
@@ -932,7 +934,6 @@
   .markdown-body pre code,
   .markdown-body pre tt {
     display: inline;
-    max-width: auto;
     padding: 0;
     margin: 0;
     overflow: visible;

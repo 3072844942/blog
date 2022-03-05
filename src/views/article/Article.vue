@@ -388,7 +388,7 @@ export default {
             function(c) {
               var r = (d + Math.random() * 16) % 16 | 0;
               d = Math.floor(d / 16);
-              return (c == "x" ? r : (r & 0x3) | 0x8).toString(16);
+              return (c === "x" ? r : (r & 0x3) | 0x8).toString(16);
             }
           );
           // 复制功能主要使用的是 clipboard.js
@@ -401,7 +401,7 @@ export default {
           }
           linesNum += "</span>";
           if (lang == null) {
-            lang = "java";
+            lang = "C";
           }
           if (lang && hljs.getLanguage(lang)) {
             // highlight.js 高亮代码
