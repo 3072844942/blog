@@ -255,12 +255,20 @@ export default {
       },
       articleList: [],
       talkList: [],
-      current: 1
+      current: 1,
+      username: "",
+      password: "",
+      isSelectedLogin: "false",
     };
   },
   methods: {
     // 初始化
     init() {
+      this.getCookie();
+      if (this.isSelectedLogin === "true") {
+        this.login();
+      }
+
       document.title = this.blogInfo.websiteConfig.websiteName;
       // 一言Api进行打字机循环输出效果
       fetch("https://v1.hitokoto.cn/")
@@ -270,6 +278,51 @@ export default {
         .then(({ hitokoto }) => {
           this.initTyped(hitokoto);
         });
+    },
+    getCookie() {
+      if (document.cookie.length > 0) {
+        var arr = document.cookie.split('; ');//这里显示的格式需要切割一下自己可输出看下
+        for (var i = 0; i < arr.length; i++) {
+          var arr2 = arr[i].split('=');//再次切割
+          //判断查找相对应的值
+          if (arr2[0] === 'userName') {
+            this.username = arr2[1];//保存到保存数据的地方
+          } else if (arr2[0] === 'userPwd') {
+            this.password = arr2[1];
+          }
+          else if (arr2[0] === "isSelectedLogin"){
+            this.isSelectedLogin = arr2[1];
+          }
+        }
+      }
+    },
+    login() {
+      const that = this;
+      // eslint-disable-next-line no-undef
+      var captcha = new TencentCaptcha(this.config.TENCENT_CAPTCHA, function(
+          res
+      ) {
+        if (res.ret === 0) {
+          //发送登录请求
+          let param = new URLSearchParams();
+          param.append("username", that.username);
+          param.append("password", that.password);
+          console.log(that.username, that.password);
+          that.axios.post("/api/login", param).then(({ data }) => {
+            if (data.flag) {
+              that.username = "";
+              that.password = "";
+              that.$store.commit("login", data.data);
+              that.$store.commit("closeModel");
+              that.$toast({ type: "success", message: "登录成功" });
+            } else {
+              that.$toast({ type: "error", message: data.message });
+            }
+          });
+        }
+      });
+      // 显示验证码
+      captcha.show();
     },
     listHomeTalks() {
       this.axios.get("/api/home/talks").then(({ data }) => {

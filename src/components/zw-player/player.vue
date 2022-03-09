@@ -277,7 +277,7 @@ export default {
     this.Player();
   },
   created() {
-    this._getMusicType(3778678);
+    this._getMusicType(5073583235);
     this.DisAuthorInfo(); //禁删~感谢配合
   },
   computed: {

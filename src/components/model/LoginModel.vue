@@ -34,7 +34,27 @@
         >
           登录
         </v-btn>
-        <!-- 注册和找回密码 -->
+        <v-btn
+            class="mt-7"
+            block
+            v-show="!isSelected()"
+            color="blue"
+            style="color:#fff"
+            @click="change()"
+        >
+          下次自动登录
+        </v-btn>
+        <v-btn
+            class="mt-7"
+            block
+            v-show="isSelected()"
+            color="blue"
+            style="color:#fff"
+            @click="change()"
+        >
+          取消自动登录
+        </v-btn>
+<!--        注册和找回密码-->
         <div class="mt-10 login-tip">
           <span @click="openRegister">立即注册</span>
           <span @click="openForget" class="float-right">忘记密码?</span>
@@ -67,9 +87,8 @@
 export default {
   data: function() {
     return {
-      username: "",
-      password: "",
-      show: false
+      show: false,
+      isSelectedLogin: "false",
     };
   },
   computed: {
@@ -98,6 +117,13 @@ export default {
     }
   },
   methods: {
+    isSelected() {
+      return this.isSelectedLogin == 'true';
+    },
+    change() {
+      if (this.isSelectedLogin === "true") this.isSelectedLogin = "false";
+      else this.isSelectedLogin = "true";
+    },
     openRegister() {
       this.$store.state.loginFlag = false;
       this.$store.state.registerFlag = true;
@@ -105,6 +131,14 @@ export default {
     openForget() {
       this.$store.state.loginFlag = false;
       this.$store.state.forgetFlag = true;
+    },
+    setCookie(is, name, password) {
+      var exdate = new Date();//获取时间
+      exdate.setTime(exdate.getTime() + 30 * 24 * 60 * 60 * 1000);//保存的天数
+      //字符串拼接cookie
+      window.document.cookie = "isSelectedLogin" + "=" + is + ";path=/;expires=" + exdate.toGMTString();
+      window.document.cookie = "userName" + "=" + name + ";path=/;expires=" + exdate.toGMTString();
+      window.document.cookie = "userPwd" + "=" + password + ";path=/;expires=" + exdate.toGMTString();
     },
     login() {
       var reg = /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
@@ -126,6 +160,7 @@ export default {
           let param = new URLSearchParams();
           param.append("username", that.username);
           param.append("password", that.password);
+          that.setCookie(that.isSelectedLogin, that.username, that.password);
           that.axios.post("/api/login", param).then(({ data }) => {
             if (data.flag) {
               that.username = "";
