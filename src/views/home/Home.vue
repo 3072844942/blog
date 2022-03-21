@@ -258,14 +258,14 @@ export default {
       current: 1,
       username: "",
       password: "",
-      isSelectedLogin: "false",
+      isSelectedLogin: "false"
     };
   },
   methods: {
     // 初始化
     init() {
       this.getCookie();
-      if (this.isSelectedLogin === "true") {
+      if (this.isSelectedLogin === "true" && !this.$store.state.avatar) {
         this.login();
       }
 

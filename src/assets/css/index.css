@@ -2,7 +2,7 @@
 body {
   cursor: url(https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/img/default.cur),default;
 }
-a, button, img {
+a, button, img, router-link {
   cursor: url(https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/img/pointer.cur),default;
 }
 ul{
@@ -313,7 +313,7 @@ p {
   resize: none;
   width: 100%;
   border-radius: 4px;
-  background: url(https://static.talkxj.com/config/commentBack.webp) 100% 100% no-repeat;
+  background: url(https://www.static.snak.space/config/commentBack.webp) 100% 100% no-repeat;
 }
 
 .upload-btn{

@@ -258,6 +258,7 @@
 import Clipboard from "clipboard";
 import Comment from "../../components/Comment";
 import tocbot from "tocbot";
+// import { mavonEditor } from 'mavon-editor';
 export default {
   components: {
     Comment
@@ -411,7 +412,7 @@ export default {
               html += '<b class="name">' + lang + "</b>";
             }
             // 将代码包裹在 textarea 中，由于防止textarea渲染出现问题，这里将 "<" 用 "<" 代替，不影响复制功能
-            return `<details><summary style="color: black">Code</summary><pre class="hljs"><code>${html}</code>${linesNum}</pre></details><textarea style="position: absolute;top: -9999px;left: -9999px;z-index: -9999;" id="copy${codeIndex}">${str.replace(
+            return `<pre class="hljs"><code>${html}</code>${linesNum}</pre><textarea style="position: absolute;top: -9999px;left: -9999px;z-index: -9999;" id="copy${codeIndex}">${str.replace(
               /<\/textarea>/g,
               "</textarea>"
             )}</textarea>`;
@@ -421,24 +422,24 @@ export default {
       // 定义所有插件
       let markdown_it_mathjax3 = require('markdown-it-mathjax3');
       let markdown_it_abber = require('markdown-it-abbr');
-      let markdown_it_deflist = require('markdown-it-deflist');
       let markdown_it_emoji = require('markdown-it-emoji');
       let markdown_it_footnote = require('markdown-it-footnote');
       let markdown_it_ins = require('markdown-it-ins');
       let markdown_it_mark = require('markdown-it-mark');
       let markdown_it_task_lists = require('markdown-it-task-lists');
-      let markdwon_it_to = require('markdown-it-toc');
       // 使用
       md.use(markdown_it_mathjax3);
       md.use(markdown_it_abber);
-      md.use(markdown_it_deflist);
       md.use(markdown_it_emoji);
       md.use(markdown_it_footnote);
       md.use(markdown_it_ins);
       md.use(markdown_it_mark);
       md.use(markdown_it_task_lists);
-      md.use(markdwon_it_to);
       // 将markdown替换为html标签
+
+      /*
+      const md = mavonEditor.getMarkdownIt()
+       */
       article.articleContent = md.render(article.articleContent);
       this.article = article;
     },

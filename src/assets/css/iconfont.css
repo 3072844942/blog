@@ -179,34 +179,39 @@
   content: "\e633";
 }
 
-/*
-   这里是打包后的相对地址, 勿改
- */
 .iconpaint:before {
-  content: url("/static/img/paint.svg");
+  content: url("https://www.static.snak.space/icon/paint.svg");
   /*
   content: "\e73a";
    */
 }
 
 .iconfirework:before {
-  content: url("/static/img/firework.svg");
+  content: url("https://www.static.snak.space/icon/firework.svg");
   /*
   content: "\e74a";
    */
 }
 
 .iconeat:before {
-  content: url("/static/img/eat.svg");
+  content: url("https://www.static.snak.space/icon/eat.svg");
   /*
   content: "\e75a";
    */
 }
 
 .iconbili:before {
-  content: url("/static/img/bilibili.svg");
+  content: url("https://www.static.snak.space/icon/bilibili.svg");
   /*
   content: "\e76a";
    */
+}
+
+.arrow-in:before {
+  content: url("https://www.static.snak.space/icon/arrowIn.svg");
+}
+
+.arrow-out:before {
+  content: url("https://www.static.snak.space/icon/arrowOut.svg");
 }
 

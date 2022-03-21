@@ -72,17 +72,17 @@
               </router-link>
             </li>
             <li>
-              <router-link to="/" onclick="window.open('/static/paint/index.html', '_self')">
+              <router-link to="/" onclick="window.open('https://www.static.snak.space/html/paint/index.html', '_self')">
                 <i class="iconfont iconpaint" /> 画板
               </router-link>
             </li>
             <li>
-              <router-link to="/" onclick="window.open('/static/eat/index.html', '_self')">
+              <router-link to="/" onclick="window.open('https://www.static.snak.space/html/eat/index.html', '_self')">
                 <i class="iconfont iconeat" /> 今天吃什么
               </router-link>
             </li>
             <li>
-              <router-link to="/" onclick="window.open('/static/firework/index.html', '_self')">
+              <router-link to="/" onclick="window.open('https://www.static.snak.space/html/firework/index.html', '_self')">
                 <i class="iconfont iconfirework" /> 烟花模拟器
               </router-link>
             </li>

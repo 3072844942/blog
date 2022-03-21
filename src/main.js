@@ -21,6 +21,7 @@ import "vue-image-swipe/dist/vue-image-swipe.css";
 import Toast from "./components/toast/index";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
+import MavonEditor from 'mavon-editor'
 
 Vue.prototype.config = config;
 Vue.config.productionTip = false;
@@ -31,6 +32,7 @@ Vue.use(InfiniteLoading);
 Vue.use(VueAxios, axios);
 Vue.use(VueImageSwipe);
 Vue.use(Toast);
+Vue.use(MavonEditor);
 
 Vue.filter("date", function(value) {
   return dayjs(value).format("YYYY-MM-DD");
