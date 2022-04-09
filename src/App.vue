@@ -26,6 +26,8 @@
     <Player v-if="blogInfo.websiteConfig.isMusicPlayer === 1 && !isMobile" />
     <!-- 聊天室 -->
     <ChatRoom v-if="blogInfo.websiteConfig.isChatRoom === 1"></ChatRoom>
+    <!-- 右键菜单 -->
+<!--    <Menu></Menu>-->
   </v-app>
 </template>
 
@@ -41,6 +43,7 @@ import ForgetModel from "./components/model/ForgetModel";
 import EmailModel from "./components/model/EmailModel";
 import Player from "./components/zw-player/player.vue";
 import ChatRoom from "./components/ChatRoom";
+
 export default {
   created() {
     // 获取博客信息
