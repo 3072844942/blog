@@ -3,7 +3,7 @@ module.exports = {
     devServer: {
         proxy: {
             "/api": {
-                target: "http://localhost:8080",
+                target: "https://www.snak.space/api",
                 changeOrigin: true,
                 pathRewrite: {
                     "^/api": ""

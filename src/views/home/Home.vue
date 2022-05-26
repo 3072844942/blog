@@ -174,7 +174,7 @@
           </div>
           <!-- 文章信息 -->
           <div class="article-wrapper">
-            <div style="line-height:1.4">
+            <div style="line-height:1.4" class="link">
               <router-link :to="'/articles/' + item.id">
                 {{ item.articleTitle }}
               </router-link>
@@ -260,13 +260,12 @@ export default {
       current: 1,
       username: "",
       password: "",
-      isSelectedLogin: "false"
+      isSelectedLogin: localStorage.getItem("isSelectedLogin")
     };
   },
   methods: {
     // 初始化
     init() {
-      this.getCookie();
       if (this.isSelectedLogin === "true" && !this.$store.state.avatar) {
         this.login();
       }
@@ -281,28 +280,11 @@ export default {
           this.initTyped(hitokoto);
         });
     },
-    getCookie() {
-      if (document.cookie.length > 0) {
-        var arr = document.cookie.split('; ');//这里显示的格式需要切割一下自己可输出看下
-        for (var i = 0; i < arr.length; i++) {
-          var arr2 = arr[i].split('=');//再次切割
-          //判断查找相对应的值
-          if (arr2[0] === 'userName') {
-            this.username = arr2[1];//保存到保存数据的地方
-          } else if (arr2[0] === 'userPwd') {
-            this.password = arr2[1];
-          }
-          else if (arr2[0] === "isSelectedLogin"){
-            this.isSelectedLogin = arr2[1];
-          }
-        }
-      }
-    },
     login() {
       var that = this;
       let param = new URLSearchParams();
-      param.append("username", that.username);
-      param.append("password", that.password);
+      param.append("username", localStorage.getItem("username"))
+      param.append("password", localStorage.getItem("password"))
       that.axios.post("/api/login", param).then(({ data }) => {
         if (data.flag) {
           that.username = "";
@@ -460,6 +442,7 @@ export default {
 @media (min-width: 760px) {
   .blog-title {
     font-size: 2.5rem;
+    font-family: "frozen", serif;
   }
   .blog-intro {
     font-size: 1.5rem;
@@ -502,6 +485,7 @@ export default {
 @media (max-width: 759px) {
   .blog-title {
     font-size: 26px;
+    font-family: "frozen", serif;
   }
   .blog-contact {
     font-size: 1.25rem;

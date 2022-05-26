@@ -88,7 +88,7 @@ export default {
   data: function() {
     return {
       show: false,
-      isSelectedLogin: "false",
+      isSelectedLogin: localStorage.getItem("isSelectedLogin"),
     };
   },
   computed: {
@@ -102,23 +102,21 @@ export default {
     },
     isMobile() {
       const clientWidth = document.documentElement.clientWidth;
-      if (clientWidth > 960) {
-        return false;
-      }
-      return true;
+      return clientWidth <= 960;
+
     },
     socialLoginList() {
       return this.$store.state.blogInfo.websiteConfig.socialLoginList;
     },
     showLogin() {
       return function(type) {
-        return this.socialLoginList.indexOf(type) != -1;
+        return this.socialLoginList.indexOf(type) !== -1;
       };
     }
   },
   methods: {
     isSelected() {
-      return this.isSelectedLogin == 'true';
+      return this.isSelectedLogin === 'true';
     },
     change() {
       if (this.isSelectedLogin === "true") this.isSelectedLogin = "false";
@@ -132,13 +130,10 @@ export default {
       this.$store.state.loginFlag = false;
       this.$store.state.forgetFlag = true;
     },
-    setCookie(is, name, password) {
-      var exdate = new Date();//获取时间
-      exdate.setTime(exdate.getTime() + 30 * 24 * 60 * 60 * 1000);//保存的天数
-      //字符串拼接cookie
-      window.document.cookie = "isSelectedLogin" + "=" + is + ";path=/;expires=" + exdate.toGMTString();
-      window.document.cookie = "userName" + "=" + name + ";path=/;expires=" + exdate.toGMTString();
-      window.document.cookie = "userPwd" + "=" + password + ";path=/;expires=" + exdate.toGMTString();
+    save(is, name, password) {
+      localStorage.setItem("isSelectedLogin", is)
+      localStorage.setItem("username", name)
+      localStorage.setItem("password", password)
     },
     login() {
       var reg = /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
@@ -160,7 +155,7 @@ export default {
           let param = new URLSearchParams();
           param.append("username", that.username);
           param.append("password", that.password);
-          that.setCookie(that.isSelectedLogin, that.username, that.password);
+          that.save(that.isSelectedLogin, that.username, that.password);
           that.axios.post("/api/login", param).then(({ data }) => {
             if (data.flag) {
               that.username = "";
