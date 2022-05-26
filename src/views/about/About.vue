@@ -18,13 +18,16 @@
         class="about-content markdown-body"
         v-html="aboutContent"
       />
+      <about></about>
     </v-card>
   </div>
 </template>
 
 <script>
 import Clipboard from "clipboard";
+import About from "@/components/about";
 export default {
+  components: {About},
   created() {
     this.getAboutContent();
   },

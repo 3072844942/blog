@@ -1,31 +1,34 @@
 <template>
   <v-app id="app">
-    <!-- 导航栏 -->
-    <TopNavBar></TopNavBar>
-    <!-- 侧边导航栏 -->
-    <SideNavBar></SideNavBar>
-    <!-- 内容 -->
-    <v-content>
-      <router-view :key="$route.fullPath" />
-    </v-content>
-    <!-- 页脚 -->
-    <Footer></Footer>
-    <!-- 返回顶部 -->
-    <BackTop></BackTop>
-    <!-- 搜索模态框 -->
-    <searchModel></searchModel>
-    <!-- 登录模态框 -->
-    <LoginModel></LoginModel>
-    <!-- 注册模态框 -->
-    <RegisterModel></RegisterModel>
-    <!-- 忘记密码模态框 -->
-    <ForgetModel></ForgetModel>
-    <!-- 绑定邮箱模态框 -->
-    <EmailModel></EmailModel>
-    <!-- 音乐播放器 -->
-    <Player v-if="blogInfo.websiteConfig.isMusicPlayer === 1 && !isMobile" />
-    <!-- 聊天室 -->
-    <ChatRoom v-if="blogInfo.websiteConfig.isChatRoom === 1"></ChatRoom>
+<!--    <transition name="fade">-->
+<!--      <Loading v-if="this.$store.state.isLoading === 'true'"></Loading>-->
+<!--    </transition>-->
+<!--    <div v-show="this.$store.state.isLoading !== 'true'">-->
+      <!-- 导航栏 -->
+      <TopNavBar></TopNavBar>
+      <!-- 侧边导航栏 -->
+      <SideNavBar></SideNavBar>
+      <!-- 内容 -->
+      <Context></Context>
+      <!-- 页脚 -->
+      <Footer></Footer>
+      <!-- 返回顶部 -->
+      <BackTop></BackTop>
+      <!-- 搜索模态框 -->
+      <searchModel></searchModel>
+      <!-- 登录模态框 -->
+      <LoginModel></LoginModel>
+      <!-- 注册模态框 -->
+      <RegisterModel></RegisterModel>
+      <!-- 忘记密码模态框 -->
+      <ForgetModel></ForgetModel>
+      <!-- 绑定邮箱模态框 -->
+      <EmailModel></EmailModel>
+      <!-- 音乐播放器 -->
+      <Player v-if="blogInfo.websiteConfig.isMusicPlayer === 1 && !isMobile" />
+      <!-- 聊天室 -->
+      <ChatRoom v-if="blogInfo.websiteConfig.isChatRoom === 1"></ChatRoom>
+<!--    </div>-->
   </v-app>
 </template>
 
@@ -41,12 +44,18 @@ import ForgetModel from "./components/model/ForgetModel";
 import EmailModel from "./components/model/EmailModel";
 import Player from "./components/zw-player/player.vue";
 import ChatRoom from "./components/ChatRoom";
+import Context from "./components/Context";
+import Loading from "./views/Loading/Loading";
+
 export default {
   created() {
     // 获取博客信息
     this.getBlogInfo();
     // 上传访客信息
     this.axios.post("/api/report");
+
+    this.$store.state.isLoading = "false";
+    console.log(this.$store.state.isLoading);
   },
   components: {
     TopNavBar,
@@ -59,7 +68,9 @@ export default {
     RegisterModel,
     ForgetModel,
     EmailModel,
-    ChatRoom
+    ChatRoom,
+    Context,
+    Loading
   },
   methods: {
     getBlogInfo() {

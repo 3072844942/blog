@@ -139,12 +139,12 @@
             </div>
             <div class="web-info">
               <div style="padding:4px 0 0">
-                运行时间:<span class="float-right">{{ time }}</span>
+                <span>运行时间:</span>
+                <span class="float-right web-info-inner">{{ time }}</span>
               </div>
               <div style="padding:4px 0 0">
-                总访问量:<span class="float-right">
-                  {{ blogInfo.viewsCount }}
-                </span>
+                <psan>总访问量:</psan>
+                <span class="float-right web-info-inner">{{ blogInfo.viewsCount }}</span>
               </div>
             </div>
           </v-card>
@@ -238,6 +238,8 @@ export default {
     this.init();
     this.listHomeTalks();
     this.timer = setInterval(this.runTime, 1000);
+
+    this.info = localStorage.getItem("info");
   },
   data: function() {
     return {
@@ -444,6 +446,9 @@ export default {
 .left-radius {
   border-radius: 8px 0 0 8px !important;
   order: 0;
+}
+.web-info-inner {
+  background: rgba(0,0,0,.025);
 }
 .right-radius {
   border-radius: 0 8px 8px 0 !important;
