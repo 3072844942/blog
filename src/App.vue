@@ -1,8 +1,8 @@
 <template>
   <v-app id="app">
-<!--    <transition name="fade">-->
-<!--      <Loading v-if="this.$store.state.isLoading === 'true'"></Loading>-->
-<!--    </transition>-->
+    <transition name="fade">
+      <Loading v-show="this.$store.state.isLoading === true"></Loading>
+    </transition>
 <!--    <div v-show="this.$store.state.isLoading !== 'true'">-->
       <!-- 导航栏 -->
       <TopNavBar></TopNavBar>
@@ -54,8 +54,11 @@ export default {
     // 上传访客信息
     this.axios.post("/api/report");
 
-    this.$store.state.isLoading = "false";
-    console.log(this.$store.state.isLoading);
+    setInterval(() => {
+      this.$store.state.isLoading = false
+    }, 2000)
+
+    // console.log(this.$store.state.isLoading);
   },
   components: {
     TopNavBar,
@@ -88,7 +91,10 @@ export default {
         /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i
       );
       return flag;
-    }
+    },
+  },
+  mounted() {
+    this.$store.state.isLoading = false;
   }
 };
 </script>

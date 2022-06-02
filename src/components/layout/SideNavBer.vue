@@ -1,11 +1,11 @@
 <template>
   <v-navigation-drawer
-    app
-    v-model="drawer"
-    width="250"
-    disable-resize-watcher
-    right
-    overlay-opacity="0.8"
+      app
+      v-model="drawer"
+      width="250"
+      disable-resize-watcher
+      right
+      overlay-opacity="0.8"
   >
     <!-- 博主介绍 -->
     <div class="blogger-info">

@@ -219,6 +219,8 @@ import state1 from "./img/state_1.png";
 import talkicon1 from "./img/talkicon1.png";
 import talkicon2 from "./img/talkicon2.png";
 import $ from "jquery";
+import axios from "axios";
+
 export default {
   name: "Player",
   data() {
@@ -270,14 +272,16 @@ export default {
       musicAlertState: false,
       musicAlertTimer: "",
       //新增歌词评论
-      hotTalkList: []
+      hotTalkList: [],
+      cookie: "NMTID=00OQ7esGna9Nn6xK0ZsitwBANHUmlkAAAGBE8H1qA;MUSIC_U=8e67ac8b2b9b63a2e05cf3beb977c31599f997601ba68c44e1cd9076e5a3f17f2978a1666989e7516af09bc8435501093137910fb7bb98f4d89b8a43373d6a610fc31a19983cd9287a561ba977ae766d;__csrf=af4fae0a7e9699507c2e592914227c63"
     };
   },
   mounted() {
     this.Player();
   },
   created() {
-    this._getMusicType(5073583235);
+    // this.loginAnonimous();
+    this._getMusicType(3778678);
     this.DisAuthorInfo(); //禁删~感谢配合
   },
   computed: {
@@ -290,7 +294,7 @@ export default {
       if (this.musicSearchVal == "") {
         this.musicSearchList = [];
       } else {
-        getSearchSuggest(this.musicSearchVal).then(res => {
+        getSearchSuggest(this.musicSearchVal, this.cookie).then(res => {
           if (res.data.result.songs == undefined) {
             this.musicSearchList = [];
           } else {
@@ -308,6 +312,14 @@ export default {
         "background-color:rgb(30,30,30);border-radius:4px;font-size:12px;padding:4px;color:rgb(220,208,129);"
       );
     },
+    loginAnonimous() {
+      let that = this;
+      axios.get("https://app1231.acapp.acwing.com.cn/register/anonimous")
+          .then(res => {
+            console.log(res)
+            that.cookie = res.data.cookie
+          })
+    },
     MusicAlert(val) {
       this.musicAlertState = true;
       this.musicAlertVal = val;
@@ -318,11 +330,11 @@ export default {
       }, 2000);
     },
     ListAdd(obj) {
-      getMusicInfo(obj.id).then(res => {
+      getMusicInfo(obj.id, this.cookie).then(res => {
         this.musicSearchVal = "";
         if (this.myMusicList.length == 0) {
           this.myMusicList = [res.data.songs[0]];
-          this._getMusicType(-1);
+          this._getMusicType(-1, this.cookie);
           //第一次搜索直接播放
         } else {
           this.myMusicList.push(res.data.songs[0]);
@@ -395,7 +407,7 @@ export default {
             this.MusicAlert("没有歌曲,需要自己添加");
           }
         } else {
-          getHotMusic(id).then(res => {
+          getHotMusic(id, this.cookie).then(res => {
             this.musicList = res.data.playlist.tracks.splice(0, 200);
             this.thisMusicType = id;
             this.thisMusicIndex = 0;
@@ -414,7 +426,7 @@ export default {
       }
     },
     _getInfo() {
-      getMusicUrl(this.musicList[this.thisMusicIndex].id).then(res => {
+      getMusicUrl(this.musicList[this.thisMusicIndex].id, this.cookie).then(res => {
         if (
           res.data.data[0].url == null ||
           res.data.data[0].url == "" ||
@@ -449,14 +461,14 @@ export default {
             name_arr.push(i.name);
           });
           this.musicName = name_arr.join("/");
-          getWords(this.musicList[this.thisMusicIndex].id).then(res => {
+          getWords(this.musicList[this.thisMusicIndex].id, this.cookie).then(res => {
             if (!res.data.nolyric) {
               let info = this.Cut(res.data.lrc.lyric);
               this.musicWords = info.wordArr;
               this.wordsTime = info.timeArr;
             }
           });
-          getHotTalk(this.musicList[this.thisMusicIndex].id).then(res => {
+          getHotTalk(this.musicList[this.thisMusicIndex].id, this.cookie).then(res => {
             let count = 0;
             this.hotTalkList = res.data.hotComments.splice(0, 3);
             this.hotTalkList.forEach(e => {
